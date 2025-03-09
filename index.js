@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
 const app = express();
+const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 
@@ -15,8 +16,8 @@ const githubApi = axios.create({
     },
 });
 
-app.get('/', () => {
-    console.log("Server is running");
+app.get('/', (req, res) => {
+    res.json("Welcome, - by Avanishdev.")
 })
 
 // GET /github - Fetch user data and repositories
@@ -91,5 +92,9 @@ app.post('/github/:repoName/issues', async (req, res) => {
         res.status(500).json({ error: 'Failed to create issue' });
     }
 });
+
+app.listen(PORT, () => {
+    console.log(`Server is running at PORT: ${PORT}`);
+})
 
 module.exports = app;
