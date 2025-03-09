@@ -6,9 +6,9 @@ const PORT = process.env.PORT || 5000;
 const cors = require("cors");
 
 const corsOptions = {
-    origin: ['https://avanish-portfolio-site.netlify.app'],
+    origin: ["https://avanish-portfolio-site.netlify.app", "http://localhost:5173"],
     methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin'],
 }
 
 app.use(express.json());
